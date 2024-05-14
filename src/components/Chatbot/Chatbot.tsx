@@ -20,6 +20,7 @@ import { createChatBotMessage } from '../..';
 
 interface IChatbotProps {
   actionProvider: any;
+  customInput?: Element;
   messageParser: any;
   config: IConfig;
   headerText?: string;
@@ -33,6 +34,7 @@ interface IChatbotProps {
 
 const Chatbot = ({
   actionProvider,
+  customInput,
   messageParser,
   config,
   headerText,
@@ -82,6 +84,7 @@ const Chatbot = ({
     return (
       <Chat
         state={state}
+        customInput={customInput}
         setState={setState}
         widgetRegistry={widgetRegistry}
         actionProvider={actionProv}
@@ -108,6 +111,7 @@ const Chatbot = ({
         <MessageParser>
           <Chat
             state={state}
+            customInput={customInput}
             setState={setState}
             widgetRegistry={widgetRegistry}
             actionProvider={ActionProvider}
