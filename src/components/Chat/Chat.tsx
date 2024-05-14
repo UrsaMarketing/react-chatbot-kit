@@ -23,7 +23,7 @@ import { string } from 'prop-types';
 
 interface IChatProps {
   setState: React.Dispatch<SetStateAction<any>>;
-  customInput?: (props?: any) => ReactElement;
+  CustomInput?: (props?: any) => ReactElement;
   widgetRegistry: any;
   messageParser: any;
   actionProvider: any;
@@ -45,7 +45,7 @@ interface IChatProps {
 const Chat = ({
   state,
   setState,
-  customInput,
+  CustomInput,
   widgetRegistry,
   messageParser,
   parse,
@@ -299,7 +299,7 @@ const Chat = ({
           <div style={{ paddingBottom: '15px' }} />
         </div>
 
-        {customInput ? React.createElement(customInput, { input, setInputValue, handleSubmit })
+        {CustomInput ? <CustomInput input={input} setInputValue={setInputValue} handleSubmit={handleSubmit} />
           :(<div className="react-chatbot-kit-chat-input-container">
           <form
             className="react-chatbot-kit-chat-input-form"
