@@ -299,7 +299,7 @@ const Chat = ({
           <div style={{ paddingBottom: '15px' }} />
         </div>
 
-        {customInput ? customInput({ input, setInputValue, handleSubmit })
+        {customInput ? React.createElement(customInput, { input, setInputValue, handleSubmit })
           :(<div className="react-chatbot-kit-chat-input-container">
           <form
             className="react-chatbot-kit-chat-input-form"
