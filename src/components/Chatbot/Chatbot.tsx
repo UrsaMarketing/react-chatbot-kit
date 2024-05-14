@@ -20,7 +20,7 @@ import { createChatBotMessage } from '../..';
 
 interface IChatbotProps {
   actionProvider: any;
-  customInput?: Element;
+  customInput?: any;
   messageParser: any;
   config: IConfig;
   headerText?: string;

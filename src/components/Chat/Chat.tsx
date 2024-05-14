@@ -23,7 +23,7 @@ import { string } from 'prop-types';
 
 interface IChatProps {
   setState: React.Dispatch<SetStateAction<any>>;
-  customInput?: Element;
+  customInput?: any;
   widgetRegistry: any;
   messageParser: any;
   actionProvider: any;
