@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, SetStateAction } from 'react';
+import React, { useState, useRef, useEffect, SetStateAction, ReactElement } from 'react';
 import ConditionallyRender from 'react-conditionally-render';
 
 import UserChatMessage from '../UserChatMessage/UserChatMessage';
@@ -23,7 +23,7 @@ import { string } from 'prop-types';
 
 interface IChatProps {
   setState: React.Dispatch<SetStateAction<any>>;
-  customInput?: any;
+  customInput?: (props?: any) => ReactElement;
   widgetRegistry: any;
   messageParser: any;
   actionProvider: any;
@@ -299,7 +299,8 @@ const Chat = ({
           <div style={{ paddingBottom: '15px' }} />
         </div>
 
-        {customInput ? customInput:(<div className="react-chatbot-kit-chat-input-container">
+        {customInput ? customInput({ input, setInputValue, handleSubmit })
+          :(<div className="react-chatbot-kit-chat-input-container">
           <form
             className="react-chatbot-kit-chat-input-form"
             onSubmit={handleSubmit}
