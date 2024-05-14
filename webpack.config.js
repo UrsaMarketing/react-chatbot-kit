@@ -22,10 +22,6 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
-      {
-        test: /\.svg$/,
-        loader: 'react-svg-loader',
-      },
     ],
   },
   resolve: {
