@@ -45,7 +45,6 @@ interface IChatProps {
 const Chat = ({
   state,
   setState,
-  CustomInput,
   widgetRegistry,
   messageParser,
   parse,
@@ -267,6 +266,25 @@ const Chat = ({
     placeholder = placeholderText;
   }
 
+  const inputArea = (
+    <form
+      className="react-chatbot-kit-chat-input-form"
+      onSubmit={handleSubmit}
+    >
+      <input
+        className="react-chatbot-kit-chat-input"
+        placeholder={placeholder}
+        value={input}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <button
+        className="react-chatbot-kit-chat-btn-send"
+        style={customButtonStyle}
+      >
+      </button>
+    </form>
+  );
+
   return (
     <div className="react-chatbot-kit-chat-container">
       <div className="react-chatbot-kit-chat-inner-container">
@@ -299,25 +317,13 @@ const Chat = ({
           <div style={{ paddingBottom: '15px' }} />
         </div>
 
-        {CustomInput ? <CustomInput input={input} setInputValue={setInputValue} handleSubmit={handleSubmit} />
-          :(<div className="react-chatbot-kit-chat-input-container">
-          <form
-            className="react-chatbot-kit-chat-input-form"
-            onSubmit={handleSubmit}
-          >
-            <input
-              className="react-chatbot-kit-chat-input"
-              placeholder={placeholder}
-              value={input}
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-            <button
-              className="react-chatbot-kit-chat-btn-send"
-              style={customButtonStyle}
-            >
-            </button>
-          </form>
-        </div>)}
+        <ConditionallyRender
+          condition={!!customComponents.inputMessage}
+          show={customComponents.inputMessage && customComponents.inputMessage({
+            input, setInputValue, handleSubmit, placeholder
+          })}
+          elseShow={inputArea}
+        />
       </div>
     </div>
   );
